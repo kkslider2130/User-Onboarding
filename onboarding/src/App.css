@@ -1,0 +1,39 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.inner-div {
+  background-color: #3a4968;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.inner-div h1 {
+  margin-bottom: 3rem;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.btn {
+  margin-top: 1rem;
+  margin-bottom: 4rem;
+}
+
+.feedback {
+  width: 100%;
+  margin-top: 0.25rem;
+  font-size: 80%;
+  color: #dc3545;
+  margin-bottom: 0;
+}
