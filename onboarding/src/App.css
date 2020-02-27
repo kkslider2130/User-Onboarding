@@ -37,3 +37,8 @@
   color: #dc3545;
   margin-bottom: 0;
 }
+
+ul {
+  padding: 2rem;
+  border: 2px solid white;
+}

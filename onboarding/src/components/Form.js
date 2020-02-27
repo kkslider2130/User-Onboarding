@@ -2,14 +2,21 @@ import React, { useState, useEffect } from "react";
 import { withFormik, Form, Field } from "formik";
 import * as yup from "yup";
 import axios from "axios";
-import { Button, FormGroup, Label, FormFeedback } from "reactstrap";
+import { Button, FormGroup, Label } from "reactstrap";
 
 function SignupForm(props) {
-  const [data, setData] = useState({});
-  console.log(props);
+  const [data, setData] = useState([]);
+  /*   const [userArray] = useState([]);
+   */ /*   let isObjectEmpty = !Object.keys(data).length;
+   */ console.log(props);
   useEffect(() => {
-    props.status && setData(props.status);
+    props.status && setData(data => [...data, props.status], [props.status]);
+    /*     userArray.push(props.status);
+     */
   }, [props.status]);
+  /* useEffect(() => {
+    !isObjectEmpty && userArray.push(data);
+  }, [data]); */
   return (
     <div className="main-form">
       <Form>
@@ -83,13 +90,17 @@ function SignupForm(props) {
 
         <Button type="submit">Submit</Button>
       </Form>
-      {data.username && (
-        <ul key={data.id}>
-          <li>user name: {data.username}</li>
-          <li>email: {data.email}</li>
-          <li>password: {data.password}</li>
-        </ul>
-      )}
+
+      {data.map(a => {
+        return (
+          <ul key={a.id}>
+            <h3>ID: {a.id}</h3>
+            <li>user name: {a.username}</li>
+            <li>email: {a.email}</li>
+            <li>password: {a.password}</li>
+          </ul>
+        );
+      })}
     </div>
   );
 }
@@ -128,6 +139,7 @@ export default withFormik({
 
   handleSubmit: (values, formikBag) => {
     console.log("submitting...", formikBag);
+
     axios
       .post("https://reqres.in/api/users/", values)
       .then(res => {
