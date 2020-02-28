@@ -10,7 +10,7 @@ function SignupForm(props) {
    */ /*   let isObjectEmpty = !Object.keys(data).length;
    */ console.log(props);
   useEffect(() => {
-    props.status && setData(data => [...data, props.status], [props.status]);
+    props.status && setData(data => [...data, props.status]);
     /*     userArray.push(props.status);
      */
   }, [props.status]);
